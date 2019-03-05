@@ -107,7 +107,9 @@ def main():
 #          """ Brief description of what an object of the class 'is'. """
 #
 ###############################################################################
-
+class Baby(object):
+    def __init__(self):
+        
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
