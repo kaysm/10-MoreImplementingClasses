@@ -402,7 +402,7 @@ class Line(object):
           :rtype: float
         """
         # ---------------------------------------------------------------------
-        # TODO: 6.
+        # DONE: 6.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -410,6 +410,11 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        elp = self.start.x - self.end.x
+        if elp == 0:
+            return math.inf
+        else:
+            return (self.end.y - self.start.y)/(self.end.x - self.start.x)
 
     def length(self):
         """
