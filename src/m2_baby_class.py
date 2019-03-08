@@ -42,7 +42,7 @@ def main():
 
 
 ###############################################################################
-# TODO: 2.
+# DONE: 2.
 #
 #  Step 2a:  Implement a class called   Baby   that has a constructor method
 #            (__init__) and two other methods, as described below.
@@ -111,18 +111,22 @@ class Baby(object):
     def __init__(self,name):
         self.name = name
         print('Hello baby ', self.name, '!')
+        self.h = 0
 
     def feed_baby(self):
-        Print('Thank you for feeding baby ', self.name, '.')
+        print('Thank you for feeding baby ', self.name, '.')
+        self.h = 0
 
     def hour_passes(self):
 
-        if
-            print('Baby ',self.name, 'is sleeping.')
-        elif
-            print('Baby ',self.name, 'is awake.  Time for food.')
-        else
-           print('Baby ',self.name, 'is CRYING uncontrollably!  Feed the Baby!')
+        if self.h == 0:
+            print('Baby ', self.name, 'is sleeping.')
+        elif self.h == 1:
+            print('Baby ', self.name, 'is awake.  Time for food.')
+        else:
+            print('Baby ', self.name, 'is CRYING uncontrollably!  Feed the Baby!')
+
+        self.h = self.h + 1
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
 # -----------------------------------------------------------------------------
