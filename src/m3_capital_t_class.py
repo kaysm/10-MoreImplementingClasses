@@ -20,7 +20,7 @@ def main():
     print('Un-comment the calls in MAIN one by one')
     print(' to run the testing code as you complete the TODOs.')
 # todo
-    # run_test_simple_t()
+    run_test_simple_t()
     # run_test_set_colors()
     # run_test_move_by()
     # run_test_clone()
@@ -144,7 +144,8 @@ class CapitalT(object):
             to make any other instance variables than h_rect and v_rect.
             You must figure out how to do the problem with ONLY
             those two instance variables.
-
+        """
+        """
         Example:
             t1 = CapitalT(rg.Point(300, 50), 100, 200, 20)
                 -- t1.h_rect would have an upper left corner of (250, 40)
@@ -162,7 +163,7 @@ class CapitalT(object):
           :type letter_thickness:    int
         """
         # ---------------------------------------------------------------------
-        # TODO: 3.
+        # DONE: 3.
         #   READ the above specification, including the Example.
         #   Implement this method, using the instance variables
         #      h_rect
@@ -170,6 +171,15 @@ class CapitalT(object):
         #   and *** NO OTHER INSTANCE VARIABLES. ***
         #   Note: Implement   attach_to   before testing this __init__ method.
         # ---------------------------------------------------------------------
+        self.ic = intersection_center
+        self.width = width
+        self.height = height
+        self.letter_thickness = letter_thickness
+        t = self.letter_thickness/2
+        w = self.width/2
+        h = self.height - letter_thickness
+        self.h_rect = rg.Rectangle(rg.Point(self.ic.x - w, self.ic.y + t), rg.Point(self.ic.x + w, self.ic.y - t))
+        self.v_rect = rg.Rectangle(rg.Point(self.ic.x + t, self.ic.y - t), rg.Point(self.ic.x - t, self.ic.y + h + t))
 
     def attach_to(self, window):
         """
@@ -190,7 +200,7 @@ class CapitalT(object):
           :type window: rg.RoseWindow
         """
         # ---------------------------------------------------------------------
-        # TODO: 4.
+        # DONE: 4.
         #   READ the above specification, including the Example.
         #   Implement this method, then TEST it by:
         #     a. Un-comment the call to its test function, in main.  Run.
@@ -198,6 +208,8 @@ class CapitalT(object):
         #     c. Compare the graphics window to the   simple_t.pdf   pictures.
         #        They should look exactly the same as each other.
         # ---------------------------------------------------------------------
+        self.h_rect.attach_to(window)
+        self.v_rect.attach_to(window)
 
     def set_colors(self, fill_color, outline_color):
         """
@@ -230,6 +242,7 @@ class CapitalT(object):
         #     c. Compare the graphics window to the  set_colors.pdf   pictures.
         #        They should look exactly the same as each other.
         # ---------------------------------------------------------------------
+        self.
 
     def move_by(self, dx, dy):
         """

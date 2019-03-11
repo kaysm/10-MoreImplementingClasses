@@ -40,6 +40,7 @@ def main():
     a  TEST   function will not be called until you begin work
     on the code that it is testing.
     """
+
     if m1t.is_implemented('__init__'):
         run_test_init()
     if m1t.is_implemented('clone'):
@@ -228,6 +229,8 @@ class Line(object):
         self.start = start.clone()
         self.end = end.clone()
         self.nc = 0
+        self.q1 = start
+        self.q2 = end
 
     def __repr__(self):
         """
@@ -592,7 +595,7 @@ class Line(object):
           :rtype: Point
         """
         # ---------------------------------------------------------------------
-        # TODO: 11.
+        # DONE: 11.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -600,6 +603,7 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        return Point(self.start.x+((self.end.x-self.start.x)/2), self.start.y+((self.end.y-self.start.y)/2))
 
     def is_parallel(self, line2):
         """
@@ -610,7 +614,8 @@ class Line(object):
           given Line (line2).  Returns  False  otherwise.
             *** SEE THE IMPORTANT NOTE BELOW, re ROUNDING numbers.
         Side effects: None.
-
+        """
+        """
         Examples:
             line1 = Line(Point(15, 30), Point(17, 50))  # slope is 10.0
             line2 = Line(Point(10, 10), Point(15, 60))  # slope is 10.0
@@ -629,7 +634,7 @@ class Line(object):
           :rtype: bool
         """
         # ---------------------------------------------------------------------
-        # TODO: 12.
+        # DONE: 12.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -664,6 +669,15 @@ class Line(object):
         # floating-point errors while distinguishing numbers that really
         # are different from each other.
         #######################################################################
+        if (self.start.x - self.end.x) == 0:
+            m1 = math.inf
+        else:
+            m1 = round((self.start.y - self.end.y) / (self.start.x - self.end.x), 12)
+        if (line2.start.x-line2.end.x) == 0:
+            m2 = math.inf
+        else:
+            m2 = round((line2.start.y-line2.end.y)/(line2.start.x-line2.end.x), 12)
+        return m1 == m2
 
     def reset(self):
         """
@@ -672,7 +686,8 @@ class Line(object):
         What goes out: Nothing (i.e., None).
         Side effects: MUTATES this Line so that its start and end points
           revert to what they were when this Line was constructed.
-
+        """
+        """
         Examples:
             p1 = Point(-3, -4)
             p2 = Point(3, 4)
@@ -695,7 +710,7 @@ class Line(object):
             print(line2)  # Should print: Line[(0, 1), (10, 20)]
         """
         # ---------------------------------------------------------------------
-        # TODO: 13.
+        # DONE: 13.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -703,7 +718,8 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
-
+        self.start = self.q1
+        self.end = self.q2
 
 ###############################################################################
 # The TEST functions for the  Line  class begin here.
